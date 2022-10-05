@@ -8,7 +8,7 @@ import React, { useState } from 'react';
 import { ModeProvider } from './Context/ModeProvider';
 import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react';
 import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
-import {  UnsafeBurnerWalletAdapter } from '@solana/wallet-adapter-wallets';
+import {  UnsafeBurnerWalletAdapter, } from '@solana/wallet-adapter-wallets';
 import {
   WalletModalProvider,
   WalletDisconnectButton,
@@ -31,12 +31,11 @@ function App() {
     ],
     []
   );
+  console.log(wallets)
   return (
     <ConnectionProvider endpoint={endpoint}>
       <WalletProvider wallets={wallets} autoConnect>
         <WalletModalProvider>
-          
-          
           <ModeProvider>
             <BrowserRouter>
               <Navbar />

@@ -16,6 +16,7 @@ import {
     WalletDisconnectButton,
     WalletMultiButton
   } from '@solana/wallet-adapter-react-ui';
+import { useWallet } from '@solana/wallet-adapter-react'
 const CreateRaffle = () => {
     const { darkMode } = useContext(DarkModeContext)
     const [show, setShow] = useState();
@@ -36,10 +37,12 @@ const CreateRaffle = () => {
         borderRadius: '20px',
         p: 4,
     };
-    return (
+    const { publicKey, sendTransaction,connected } = useWallet();
+
+    return (    
         <div className='container mx-auto' style={{ minHeight: '90vh' }}>
             {
-                !window?.solflare?.publicKey?.toString() ?
+                !connected ?
                     (
                         <>
                             <h1 style={{ color: '#42296A', paddingTop: '100px' }} className="text-xl font-bold tracking-tight py-8 sm:text-5xl md:text-5xl">
